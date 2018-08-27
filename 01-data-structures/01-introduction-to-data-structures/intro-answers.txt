@@ -1,0 +1,28 @@
+Line data structure:
+the line data structures models a group of people standing in a line.
+#1) Developers can access the members of the line by access the line.members property.
+    A developer can find the first person in the line by using the front method.  The 
+    middle person is returned by using the middle method and the last person is returned
+    by using the line.back method.
+    Developers can add a person to the line by using the line.join("name") method.  And 
+    he or she can remove a person from the line by using the line.leave("name") method.
+    
+#2) A developer can also check if a person is in the line by using the line.search("name")
+    method.  This will return person if he or she is in the line and nil if he or she is not.
+
+#3) The line data stucture is an object that stores an array and has methods for 
+    manipulating the data within the array.  Another real world example of where a 
+    data stucture like this could be used would be keeping track of the number of
+    cars for sale on a car lot.  Or it could also be used to keep track of the
+    number of people in a store.
+
+Screen Data Structure:
+The screen data structure object stores the state of a matrix that represents the
+pixels on a screen.
+#1) Developers can access the matrix by using the screen.at(x,y) method (where the x
+    and y are coordinates on the screen).  This will return a pixel object with properties
+    of red, green, blue, x and y.  The developer can insert pixel data into the screen object
+    by using the screen.insert(pixel, x, y) method.
+#2) Developers can retreive a value from the screen matrix by using the screen.at(x,y) method.
+#3) The screen object stores a matrix of color values.  This type of structure could
+    also be used for creating or manipulating and image.

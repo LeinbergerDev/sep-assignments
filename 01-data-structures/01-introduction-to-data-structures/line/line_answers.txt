@@ -1,0 +1,9 @@
+the line class contains a members array.  Developers can access and manipulate
+data as follows:
+
+The front method returns the first item in the member array.
+The middle method returns the member at the center of the array.
+The back method returns the last item in the members array.
+The search method finds a member in the line by name.
+The join method adds a person to the end of the members array.
+Any member of the line can be removed from the line by using the Leave method.

@@ -33,15 +33,22 @@ class Line
   end
 
   def search(person)
-    index = self.members.index(person)
-    if index != nil
-    self.members[index]
+    if index(person)
+      return self.members[index(person)]
+    else
+      return nil
     end
   end
 
   private
 
   def index(person)
+    index = self.members.index(person)
+    if index != nil
+      return index
+    else
+      return nil
+    end
   end
 
 end
