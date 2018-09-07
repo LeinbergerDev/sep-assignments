@@ -1,5 +1,7 @@
 include RSpec
 
+require 'benchmark'
+
 require_relative 'node'
 require_relative 'linked_list'
 
@@ -8,7 +10,7 @@ RSpec.describe LinkedList, type: Class do
   let(:n2) { Node.new("Ben") }
   let(:n3) { Node.new("Mike") }
   let(:llist) { LinkedList.new }
-
+  
   describe "#add_to_tail" do
     it "adds a Node to the tail" do
       llist.add_to_tail(n1)
@@ -89,4 +91,7 @@ RSpec.describe LinkedList, type: Class do
       expect(llist.head).to eq nil
     end
   end
+
+
+  
 end
