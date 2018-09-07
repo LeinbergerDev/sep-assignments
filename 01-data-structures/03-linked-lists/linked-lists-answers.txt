@@ -1,8 +1,18 @@
-       user             system      total        real
+   Label                 user       system      total       real
 Create Array:          0.000000   0.000000   0.000000 (  0.000948)
 Create list:           0.000000   0.000000   0.000000 (  0.004378)
 Find Array Item:       0.000000   0.000000   0.000000 (  0.000007)
 Find List Item 5000:   0.000000   0.000000   0.000000 (  0.001106)
-Find List Item 1:      0.000000   0.000000   0.000000 (  0.001493)
 Remove array item:     0.000000   0.000000   0.000000 (  0.000004)
 Remove list item 5000: 0.000000   0.000000   0.000000 (  0.000538)
+
+Spacial locality refers to data that is stored in realitive proximity to each other.
+Arrays use sequential locality which means that they are stored in sequential memory
+locations.  This allows array indexing and allows us to quickly loop over an array
+or to go directly to an array element using it's index.
+A linked list on the other does not store it's items sequentialy.  Each node of the
+linked list must store a pointer to the next item on the list.  Each item is stored
+whatever location the cpu chooses upon creation.  This could result in the cpu having
+to return to the ram when it can't find the list item in the cached memory buffer.
+This results in the linked list being slower than an array.
+
