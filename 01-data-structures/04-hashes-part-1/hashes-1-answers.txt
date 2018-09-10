@@ -1,0 +1,11 @@
+Doubling the array size everytime that there is a collision could quickly start
+having issues.  First there is the density of the array issue.  Take our movie has 
+as an example.  This has starts out with 6 items.  There is a collision between 
+'The Lord of the Rings: The Fellowship of the Ring' and 'The Lord of the Rings: 
+The Return of the King'.  Using our hashing function both of these keys will try 
+to store their value in index 5.  When we resize the array to 12 the collision
+still occures.  We have to resize the array a second time to get rid of this collision.
+So after dealing with this collision we have an array size of 24 for at the most 
+6 items.  That is 4 times as many empty slots.
+
+
