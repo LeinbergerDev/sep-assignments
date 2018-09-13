@@ -15,6 +15,12 @@ RSpec.describe OpenAddressing, type: Class do
     star_wars_movies["Star Wars: Return of the Jedi"] = "Number Six"
   end
 
+  describe "#print" do
+    it "prints out the status of the hash to the command line" do
+      star_wars_movies.print
+    end
+  end
+
   describe "#index" do
     it "creates a hash key based on the string value passed in" do
       i = star_wars_movies.index("Star Wars: A New Hope", 6)
@@ -43,7 +49,7 @@ RSpec.describe OpenAddressing, type: Class do
       hash["key"] = "value"
       expect(hash.size).to eq 1
       hash["key"] = "second value"
-      expect(hash.size).to eq 2
+      expect(hash.size).to eq 4
     end
 
     it "sets the value of key to value" do
