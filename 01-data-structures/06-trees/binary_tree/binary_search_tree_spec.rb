@@ -145,23 +145,45 @@ RSpec.describe BinarySearchTree, type: Class do
   describe "#printf" do
      specify {
        expected_output = "The Matrix: 87\nStar Wars: Return of the Jedi: 80\nStar Wars: A New Hope: 93\nPacific Rim: 72\nInception: 86\nThe Martian: 92\nStar Wars: The Empire Strikes Back: 94\nBraveheart: 78\nThe Shawshank Redemption: 91\nMad Max 2: The Road Warrior: 98\nDistrict 9: 90\n"
+       puts("--")
+       tree.printf
        tree.insert(root, hope)
+       puts("---")
+       tree.printf
        tree.insert(root, empire)
+       puts("----")
+       tree.printf
        tree.insert(root, jedi)
+       puts("-----")
+       tree.printf
        tree.insert(root, martian)
+       puts("------")
+       tree.printf
        tree.insert(root, pacific_rim)
+       puts("-------")
+       tree.printf
        tree.insert(root, inception)
+       puts("-------")
+       tree.printf
        tree.insert(root, braveheart)
+       puts("-------")
+       tree.printf
        tree.insert(root, shawshank)
+       puts("-------")
+       tree.printf
        tree.insert(root, district)
+       puts("---------")
+       tree.printf
        tree.insert(root, mad_max_2)
+       puts("---------")
+       tree.printf
        expect { tree.printf }.to output(expected_output).to_stdout
      }
 
      specify {
        expected_output = "The Matrix: 87\nBraveheart: 78\nMad Max 2: The Road Warrior: 98\nPacific Rim: 72\nInception: 86\nDistrict 9: 90\nStar Wars: Return of the Jedi: 80\nThe Shawshank Redemption: 91\nThe Martian: 92\nStar Wars: The Empire Strikes Back: 94\nStar Wars: A New Hope: 93\n"
        tree.insert(root, mad_max_2)
-       tree.insert(root, district)
+       tree.insert(root, district)       
        tree.insert(root, shawshank)
        tree.insert(root, braveheart)
        tree.insert(root, inception)
