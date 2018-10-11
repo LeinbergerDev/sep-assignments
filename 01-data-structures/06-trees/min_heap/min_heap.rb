@@ -7,73 +7,63 @@ class Minheap
         @root = root
     end
 
-    def insert(data)
-        if @root == nil
-            @root = data
-        end
-        if @root.rating > data.rating
-            temp = @root
-            @root = data
-            insert(temp)
-        end
-        if @root.left == nil
-            @root.left = data
-            return
-        end
-        if @root.right == nil
-            if @root.left.rating > data.rating
-                @root.right = @root.left
-                @root.left = data
-                return
-            else
-                @root.right = data
-                return
-            end
-        end
-        if @root.right != nil && @root.right != nil
-            #step through each layer to find the correct spot for the node
-            queue = Queue.new
-            queue.enq(@root)
-            result = nil
-            while !queue.empty?
-                node = queue.deq
-                if node.left != nil
-                    # if the rating of node.left is less than data.rating 
-                    # then I need to insert the data node here.
-                    if node.left.rating > data.rating
-                        insertAtNode(node.left, data)
-                    else
-                        queue.enq(node.left)
-                    end
-                end
-                if node.right != nil
-                    queue.enq(node.right)
-                end
-            end
-        end
-    end
-
-    def insertAtNode(root, data)
+    def insert(root, data)
+        # if @root is nil then insert data to @root.
+        @root = data if @root == nil
+        #check if root rating is greater than data.rating
         if root.rating > data.rating
+            # store the root object in a temp node.
             temp = root
-            root = data
-            insertAtNode(root, temp)
+            # reset @root to the data node.
+            @root = data
+            # insert the temp node back into the heap.
+            insert(@root, data)
         else
+            # since @root rating is less than data rating insert data as a child.
+            # if the left leaf is nil insert the data node there.
             if root.left == nil
                 root.left = data
+                # exit method
+                return
+            # if the left leaf has a value compare it to the data rating value.
             else
-                if root.right == nil
-                    if root.left.rating > data.rating
-                        root.right = root.left
-                        root.left = data
-                    else
+                if root.left < data.rating
+                    # if the right node is nil enter it there.
+                    if root.right == nil
                         root.right = data
+                        # exit method
+                        return
+                    else 
+                        # if the left node's left and right nodes are full then move to the right node.
+                        if root.left.left == nil
+                            root.left.left = data
+                            return
+                        elsif root.left.right == nil
+                            if root.left.left.rating < data.rating
+                                root.left.right = data
+                                return
+                            else
+                                root.left.right = root.left.left
+                                root.left.left = data
+                                return
+                            end
+                        elsif root.right.left == nil
+                            root.right.left = data
+                            return
+                        elsif root.right.right == nil
+                            if root.right.left < data.rating
+                                root.right.right = data
+                            else
+                                root.right.right = root.right.left
+                                rooot.right.left = data
+                            end
+                        end
                     end
                 end
-            end
+            end 
         end
-    end
 
+    end
 
     def delete(root, data)
         
