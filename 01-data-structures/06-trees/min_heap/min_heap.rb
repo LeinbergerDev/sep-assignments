@@ -42,19 +42,15 @@ class Minheap
     end
 
     def find(root, data)
-        if root == nil || data == nil
-            return nil
-        else
-            if root.title == data
-                return root
-            else
-                if root.title == data
-                    return root
-                elsif root.left != nil
-                    find(root.left, data)
-                elsif root.right != nil
-                    find(root.right, data)
-                end
+        if @root != nil
+            queue = Queue.new
+            queue.enq(@root)
+            result = nil
+            while !queue.empty?
+                node = queue.deq
+                return node if node.title == data
+                queue.enq(node.left) if node.left
+                queue.enq(node.right) if node.right
             end
         end
     end

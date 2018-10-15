@@ -1,5 +1,7 @@
 include RSpec
 
+require 'benchmark'
+
 require_relative 'binary_search_tree'
 
 RSpec.describe BinarySearchTree, type: Class do
@@ -171,6 +173,32 @@ RSpec.describe BinarySearchTree, type: Class do
        tree.insert(root, empire)
        tree.insert(root, hope)
        expect { tree.printf }.to output(expected_output).to_stdout
+       puts(tree.printf)
      }
   end
+
+  describe "#benchmark" do
+    index = 1
+    node = Node.new("Title #{index.to_s}", index )
+    tree = BinarySearchTree.new(node)
+    root = tree.root
+    Benchmark.bm do |x|
+        x.report("Insert 100000 nodes"){ 
+            100000.times do
+                index = index + 1
+                node = Node.new("Title #{index.to_s}", index)
+                tree.insert(root, node)
+                root = node
+            end 
+        }
+        x.report("Find node 50000"){
+            tree.find(tree.root, "Title 50000")
+            puts(node)          
+        }
+        x.report("Delete node 10000") {
+            tree.delete(tree.root, "Title 10000")
+        }
+    end
+  end
+
 end

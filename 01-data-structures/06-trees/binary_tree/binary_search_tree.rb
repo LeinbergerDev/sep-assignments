@@ -25,38 +25,16 @@ class BinarySearchTree
 
   # Recursive Depth First Search
   def find(root, data)
-    if data ==  nil || root == nil
-      return nil
-    end
-    
-    if root.title == data
-      return root
-    end
-
-    if root.left != nil
-      if root.left.title == data
-        return root.left
-      else
-        foundNode = find(root.left, data)
-        if foundNode != nil
-          return foundNode
-        end
+    if @root != nil
+      queue = Queue.new
+      queue.enq(@root)
+      result = nil
+      while !queue.empty?
+        node = queue.deq
+        return node if node.title == data
+        queue.enq(node.left) if node.left
+        queue.enq(node.right) if node.right
       end
-    end
-
-    if root.right != nil
-      if root.right.title == data
-        return root.right
-      else
-        foundNode = find(root.right, data)
-        if foundNode != nil
-          return foundNode
-        end
-      end
-    end
-
-    if root.left == nil && root.right == nil
-      return nil
     end
 
   end
